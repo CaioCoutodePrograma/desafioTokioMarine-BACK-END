@@ -11,6 +11,7 @@ import java.util.Date;
 @Setter
 @Data
 @Entity
+@Table(name = "TRANSFERENCIA")
 public class TransfereciaModel {
 
     @Id
