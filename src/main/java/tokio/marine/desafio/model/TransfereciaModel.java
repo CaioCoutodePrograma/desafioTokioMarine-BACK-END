@@ -1,17 +1,14 @@
 package tokio.marine.desafio.model;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
-@Getter
-@Setter
-@Data
+
 @Entity
 @Table(name = "TRANSFERENCIA")
+@Data
 public class TransfereciaModel {
 
     @Id
@@ -20,13 +17,14 @@ public class TransfereciaModel {
     private Long id;
 
     @Column(name="data_transferencia")
-    private Date dataTransferencia;
+    private LocalDate dataTransferencia;
 
     @Column(name="data_agendamento")
-    private Date dataAgendamento;
+    private LocalDate dataAgendamento;
 
-    @Column(name="taxa")
-    private double taxa;
+    @ManyToOne
+    @JoinColumn(name = "faixa_taxa_id")
+    private FaixaTaxaModel faixaTaxa;
 
     @Column(name="valor")
     private double valor;

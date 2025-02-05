@@ -13,8 +13,9 @@ public class SpringFoxConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("tokio.marine.desafio"))
                 .paths(PathSelectors.any())
                 .build();
     }
+
 }
