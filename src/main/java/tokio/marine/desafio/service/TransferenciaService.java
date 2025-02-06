@@ -8,7 +8,9 @@ import tokio.marine.desafio.repository.TransferenciaRepo;
 import tokio.marine.desafio.utils.CalcularDias;
 
 import javax.annotation.PreDestroy;
+import javax.swing.text.DateFormatter;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -30,8 +32,9 @@ public class TransferenciaService {
     }
 
 
-    public FaixaTaxaModel calcularTaxa(LocalDate data){
-        return faixaTaxaService.calcularTaxa((new CalcularDias().calcularDias(data)));
+    public FaixaTaxaModel calcularTaxa(String data){
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return faixaTaxaService.calcularTaxa((new CalcularDias().calcularDias(LocalDate.parse(data,df))));
 
     }
 

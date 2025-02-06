@@ -1,6 +1,8 @@
 package tokio.marine.desafio.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -17,9 +19,11 @@ public class TransfereciaModel {
     private Long id;
 
     @Column(name="data_transferencia")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dataTransferencia;
 
     @Column(name="data_agendamento")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dataAgendamento;
 
     @ManyToOne
